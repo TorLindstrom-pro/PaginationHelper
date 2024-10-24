@@ -23,13 +23,7 @@ public class PaginationHelper<T>
     /// <summary>
     /// The number of pages
     /// </summary>
-    public int PageCount
-    {
-        get
-        {
-            return 0;
-        }
-    }
+    public int PageCount => 1;
 
     /// <summary>
     /// Returns the number of items in the page at the given page index 
