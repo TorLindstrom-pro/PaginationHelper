@@ -50,4 +50,12 @@ public class Tests
         var paginationHelper = new PaginationHelper<int>(list, 2);
         Assert.That(paginationHelper.PageItemCount(pageIndex), Is.EqualTo(expectedItemCount));
     }
+    
+    [Test]
+    public void PageItemCount_ReturnsNegativeOneForInvalidPageIndex()
+    {
+        var list = Enumerable.Range(0, 7).ToList();
+        var paginationHelper = new PaginationHelper<int>(list, 2);
+        Assert.That(paginationHelper.PageItemCount(4), Is.EqualTo(-1));
+    }
 }
