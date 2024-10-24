@@ -1,3 +1,5 @@
+using PaginationHelper;
+
 namespace Test;
 
 public class Tests
@@ -7,9 +9,14 @@ public class Tests
     {
     }
 
-    [Test]
-    public void Test1()
+    [Theory]
+    [TestCase(0,0)]
+    [TestCase(1,1)]
+    [TestCase(6,6)]
+    public void ItemCount_ReturnsNumberOfItems(int length, int expectedItemCount)
     {
-        Assert.Pass();
+        var list = Enumerable.Range(0, length).ToList();
+        var paginationHelper = new PaginationHelper<int>(list, 1);
+        Assert.That(paginationHelper.ItemCount, Is.EqualTo(expectedItemCount));
     }
 }
