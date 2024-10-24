@@ -40,11 +40,14 @@ public class Tests
         Assert.Throws<ArgumentException>(() => new PaginationHelper<int>(list, itemsPerPage));
     }
     
-    [Test]
-    public void PageItemCount_FirstPageIsFilled_ReturnsNumberOfItemsOnPage()
+    [Theory]
+    [TestCase(0, 2)]
+    [TestCase(1, 2)]
+    [TestCase(3, 1)]
+    public void PageItemCount_FirstPageIsFilled_ReturnsNumberOfItemsOnPage(int pageIndex, int expectedItemCount)
     {
-        var list = Enumerable.Range(0, 6).ToList();
+        var list = Enumerable.Range(0, 7).ToList();
         var paginationHelper = new PaginationHelper<int>(list, 2);
-        Assert.That(paginationHelper.PageItemCount(0), Is.EqualTo(2));
+        Assert.That(paginationHelper.PageItemCount(pageIndex), Is.EqualTo(expectedItemCount));
     }
 }
