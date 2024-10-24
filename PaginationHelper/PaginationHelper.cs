@@ -6,16 +6,19 @@ public class PaginationHelper<T>
 
     private readonly int _itemsPerPage;
     // TODO: Complete this class
-  
+
     /// <summary>
     /// Constructor, takes in a list of items and the number of items that fit within a single page
     /// </summary>
     /// <param name="collection">A list of items</param>
     /// <param name="itemsPerPage">The number of items that fit within a single page</param>
+    /// <exception cref="ArgumentException">Thrown if itemsPerPage is non-positive</exception>
     public PaginationHelper(IList<T> collection, int itemsPerPage)
     {
         _collection = collection;
-        _itemsPerPage = itemsPerPage;
+        _itemsPerPage = itemsPerPage > 0
+            ? itemsPerPage
+            : throw new ArgumentException("Items per page must be positive");
     }
 
     /// <summary>

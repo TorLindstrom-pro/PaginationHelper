@@ -30,4 +30,13 @@ public class Tests
         var paginationHelper = new PaginationHelper<int>(list, itemsPerPage);
         Assert.That(paginationHelper.PageCount, Is.EqualTo(expectedPageCount));
     }
+    
+    [Theory]
+     [TestCase(-1)]
+     [TestCase(0)]
+    public void InvalidItemsPerPage_ThrowsException(int itemsPerPage)
+    {
+        var list = Enumerable.Range(0, 6).ToList();
+        Assert.Throws<ArgumentException>(() => new PaginationHelper<int>(list, itemsPerPage));
+    }
 }
