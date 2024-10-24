@@ -3,6 +3,8 @@ namespace PaginationHelper;
 public class PaginationHelper<T>
 {
     private readonly IList<T> _collection;
+
+    private readonly int _itemsPerPage;
     // TODO: Complete this class
   
     /// <summary>
@@ -13,6 +15,7 @@ public class PaginationHelper<T>
     public PaginationHelper(IList<T> collection, int itemsPerPage)
     {
         _collection = collection;
+        _itemsPerPage = itemsPerPage;
     }
 
     /// <summary>
@@ -23,7 +26,14 @@ public class PaginationHelper<T>
     /// <summary>
     /// The number of pages
     /// </summary>
-    public int PageCount => 1;
+    public int PageCount
+    {
+        get
+        {
+            var divRem = Math.DivRem(ItemCount, _itemsPerPage);
+            return divRem.Quotient + (divRem.Remainder > 0 ? 1 : 0);
+        }
+    }
 
     /// <summary>
     /// Returns the number of items in the page at the given page index 

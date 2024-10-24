@@ -20,11 +20,14 @@ public class Tests
         Assert.That(paginationHelper.ItemCount, Is.EqualTo(expectedItemCount));
     }
     
-    [Test]
-    public void ItemsFitOnSamePage_ReturnsOne()
+    [Theory]
+    [TestCase(2, 3)]
+    [TestCase(5, 2)]
+    [TestCase(6, 1)]
+    public void PageCount_ReturnsNumberOfPagesRequired(int itemsPerPage, int expectedPageCount)
     {
         var list = Enumerable.Range(0, 6).ToList();
-        var paginationHelper = new PaginationHelper<int>(list, 6);
-        Assert.That(paginationHelper.PageCount, Is.EqualTo(1));
+        var paginationHelper = new PaginationHelper<int>(list, itemsPerPage);
+        Assert.That(paginationHelper.PageCount, Is.EqualTo(expectedPageCount));
     }
 }
