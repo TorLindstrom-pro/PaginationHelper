@@ -45,7 +45,7 @@ public class PaginationHelper<T>
     /// <returns>The number of items on the specified page or -1 for pageIndex values that are out of range</returns>
     public int PageItemCount(int pageIndex)
     {
-        if (pageIndex > PageCount - 1) return -1;
+        if (pageIndex < 0 | pageIndex > PageCount - 1) return -1;
         return pageIndex < PageCount - 1 ? _itemsPerPage : Math.DivRem(ItemCount, _itemsPerPage).Remainder;
     }
 
