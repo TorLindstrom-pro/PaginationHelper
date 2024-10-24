@@ -45,7 +45,7 @@ public class PaginationHelper<T>
     /// <returns>The number of items on the specified page or -1 for pageIndex values that are out of range</returns>
     public int PageItemCount(int pageIndex)
     {
-        return 0;
+        return _itemsPerPage;
     }
 
     /// <summary>
