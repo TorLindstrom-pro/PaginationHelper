@@ -44,7 +44,7 @@ public class Tests
     [TestCase(0, 2)]
     [TestCase(1, 2)]
     [TestCase(3, 1)]
-    public void PageItemCount_FirstPageIsFilled_ReturnsNumberOfItemsOnPage(int pageIndex, int expectedItemCount)
+    public void PageItemCount_ReturnsNumberOfItemsOnPage(int pageIndex, int expectedItemCount)
     {
         var list = Enumerable.Range(0, 7).ToList();
         var paginationHelper = new PaginationHelper<int>(list, 2);
