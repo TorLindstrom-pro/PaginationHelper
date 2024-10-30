@@ -39,7 +39,7 @@ public class PaginationHelper<T>
     public int PageItemCount(int pageIndex)
     {
         if (pageIndex < 0 | pageIndex > PageCount - 1) return -1;
-        return pageIndex < PageCount - 1 ? _itemsPerPage : Math.DivRem(ItemCount, _itemsPerPage).Remainder;
+        return Math.Min(_itemsPerPage, ItemCount - pageIndex * _itemsPerPage);
     }
 
     /// <summary>
