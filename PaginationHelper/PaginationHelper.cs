@@ -49,6 +49,6 @@ public class PaginationHelper<T>
     /// <returns>The zero-based page index of the page containing the item at the given item index or -1 if the item index is out of range</returns>
     public int PageIndex(int itemIndex)
     {
-        return itemIndex >= ItemCount ? -1 : 1;
+        return itemIndex >= ItemCount || itemIndex < 0 ? -1 : 1;
     }
 }
