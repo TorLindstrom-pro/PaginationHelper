@@ -52,6 +52,7 @@ public class PaginationHelper<T>
     /// <returns>The zero-based page index of the page containing the item at the given item index or -1 if the item index is out of range</returns>
     public int PageIndex(int itemIndex)
     {
-        return itemIndex >= ItemCount || itemIndex < 0 ? -1 : 0;
+        if (itemIndex >= ItemCount || itemIndex < 0) return -1;
+        return (int) Math.Ceiling((double) itemIndex / _itemsPerPage);
     }
 }
