@@ -8,7 +8,6 @@ public class PaginationHelper<T>
     private readonly IList<T> _collection;
 
     private readonly int _itemsPerPage;
-    // TODO: Complete this class
 
     /// <summary>
     /// Constructor, takes in a list of items and the number of items that fit within a single page
