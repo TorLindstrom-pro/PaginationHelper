@@ -29,14 +29,7 @@ public class PaginationHelper<T>
     /// <summary>
     /// The number of pages
     /// </summary>
-    public int PageCount
-    {
-        get
-        {
-            var divRem = Math.DivRem(ItemCount, _itemsPerPage);
-            return divRem.Quotient + (divRem.Remainder > 0 ? 1 : 0);
-        }
-    }
+    public int PageCount => (int) Math.Ceiling((double) ItemCount / _itemsPerPage);
 
     /// <summary>
     /// Returns the number of items in the page at the given page index 
