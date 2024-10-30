@@ -60,4 +60,12 @@ public class Tests
         var paginationHelper = new PaginationHelper<int>(list, 2);
         Assert.That(paginationHelper.PageItemCount(pageIndex), Is.EqualTo(-1));
     }
+    
+    [Test]
+    public void PageIndex_FirstItem_ReturnsPageOne()
+    {
+        var list = Enumerable.Range(0, 7).ToList();
+        var paginationHelper = new PaginationHelper<int>(list, 2);
+        Assert.That(paginationHelper.PageIndex(0), Is.EqualTo(1));
+    }
 }
