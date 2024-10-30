@@ -66,7 +66,7 @@ public class Tests
     {
         var list = Enumerable.Range(0, 7).ToList();
         var paginationHelper = new PaginationHelper<int>(list, 2);
-        Assert.That(paginationHelper.PageIndex(0), Is.EqualTo(1));
+        Assert.That(paginationHelper.PageIndex(0), Is.EqualTo(0));
     }
 
     [Theory]
