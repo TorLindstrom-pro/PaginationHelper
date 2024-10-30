@@ -52,6 +52,6 @@ public class PaginationHelper<T>
     public int PageIndex(int itemIndex)
     {
         if (itemIndex >= ItemCount || itemIndex < 0) return -1;
-        return (int) Math.Ceiling((double) itemIndex / _itemsPerPage);
+        return Math.DivRem(itemIndex, _itemsPerPage).Quotient;
     }
 }

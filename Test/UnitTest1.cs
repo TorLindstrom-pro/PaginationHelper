@@ -63,6 +63,7 @@ public class Tests
     
     [Theory]
     [TestCase(0, 0)]
+    [TestCase(1, 0)]
     [TestCase(6, 3)]
     public void PageIndex_ReturnsPageIndexOfItem(int itemIndex, int expectedPageIndex)
     {
